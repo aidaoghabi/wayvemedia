@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-800.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    body { margin: 0; background: #0A0A12; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #8F8FFC; }
+    ::selection { background: #605FFC; color: #fff; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes wordCycle { 0%, 16% { transform: translateY(0); } 20%, 36% { transform: translateY(-20%); } 40%, 56% { transform: translateY(-40%); } 60%, 76% { transform: translateY(-60%); } 80%, 96% { transform: translateY(-80%); } 100% { transform: translateY(-80%); } }
+    @keyframes caret { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes drawLine { from { stroke-dashoffset: 620; } to { stroke-dashoffset: 0; } }
+    @keyframes fadeArea { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes floaty2 { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(-1deg); } }
+    @keyframes rankUp { 0%, 55% { transform: translateY(0); opacity: 1; } 70%, 100% { transform: translateY(-4px); opacity: 1; } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes wipeIn { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+    .rv { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 5% entry 32%; }
+    .wp { animation: wipeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 10% entry 45%; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="font-family: Inter, sans-serif; background: #0A0A12; color: #ffffff; overflow-x: clip;">
+  <dc-import name="Nav" hint-size="100%,72px"></dc-import>
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="position: relative; background: radial-gradient(ellipse 90% 60% at 75% -10%, rgba(96,95,252,0.22), transparent 60%), #0A0A12;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 96px 32px 72px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+          <span style="width: 28px; height: 1px; background: #605FFC;"></span>
+          Performance marketing agency · Dubai - Stockholm
+        </div>
+        <h1 style="margin: 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(52px, 6.2vw, 92px); line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance;">
+          We turn
+          <span style="display: inline-block; vertical-align: bottom; height: 1.02em; overflow: hidden; color: #8F8FFC;">
+            <span style="display: flex; flex-direction: column; animation: wordCycle 10s cubic-bezier(0.83, 0, 0.17, 1) infinite;">
+              <span>search</span><span>paid media</span><span>data</span><span>code</span><span>search</span>
+            </span>
+          </span><br>
+          into profit.
+        </h1>
+        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.65); max-width: 540px; text-wrap: pretty;">Wayve Media is an award-winning performance marketing agency based in Dubai and Stockholm. We combine paid media with SEO, development, and strategic consulting to deliver measurable, profitable growth.</p>
+        <div style="display: flex; gap: 14px; align-items: center;">
+          <a href="Contact.dc.html" style="padding: 16px 28px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.35);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+          <a href="Services.dc.html" style="padding: 16px 24px; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px;" style-hover="color: #ffffff;">Discover Services <span style="color: #8F8FFC;">→</span></a>
+        </div>
+      </div>
+      <!-- Search → revenue composition -->
+      <div style="position: relative; min-height: 520px;" aria-hidden="true">
+        <div style="position: absolute; top: 0; left: 0; right: 40px; background: #15151F; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; gap: 12px; box-shadow: 0 24px 60px rgba(0,0,0,0.45); animation: floaty 7s ease-in-out infinite;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8F8FFC" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span style="font-size: 14px; color: rgba(255,255,255,0.85);">best running shoes dubai<span style="display: inline-block; width: 2px; height: 15px; background: #8F8FFC; margin-left: 3px; vertical-align: middle; animation: caret 1.1s step-end infinite;"></span></span>
+          <span style="margin-left: auto; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.08em;">QUERY</span>
+        </div>
+        <div style="position: absolute; top: 76px; left: 32px; right: 0; background: #12121B; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 60px rgba(0,0,0,0.45);">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: rgba(96,95,252,0.14); border: 1px solid rgba(143,143,252,0.4); border-radius: 8px; animation: rankUp 6s ease-in-out infinite;">
+            <div style="display: flex; flex-direction: column; gap: 3px;">
+              <span style="font-size: 13px; font-weight: 600; color: #B9B9FF;">yourbrand.com</span>
+              <span style="font-size: 11px; color: rgba(255,255,255,0.45);">Your company after 6 month</span>
+            </div>
+            <span style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; color: #8F8FFC;">#8 → #1</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="height: 8px; width: 72%; background: rgba(255,255,255,0.1); border-radius: 4px;"></div>
+            <div style="height: 8px; width: 58%; background: rgba(255,255,255,0.07); border-radius: 4px;"></div>
+            <div style="height: 8px; width: 64%; background: rgba(255,255,255,0.05); border-radius: 4px;"></div>
+          </div>
+        </div>
+        <div style="position: absolute; top: 250px; left: 0; right: 24px; background: #15151F; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px; box-shadow: 0 24px 60px rgba(0,0,0,0.45);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45);">Total Revenue Growth</span>
+            <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 700; color: #7CE0B8;">▲ Compounding</span>
+          </div>
+          <svg viewBox="0 0 560 180" style="width: 100%; height: auto; display: block;">
+            <defs>
+              <linearGradient id="hgrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#605FFC" stop-opacity="0.35"></stop>
+                <stop offset="100%" stop-color="#605FFC" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M0,160 C60,158 90,150 140,138 C200,124 240,108 300,86 C360,64 420,52 480,30 L560,14 L560,180 L0,180 Z" fill="url(#hgrad)" style="animation: fadeArea 1.6s 0.9s ease both;"></path>
+            <path d="M0,160 C60,158 90,150 140,138 C200,124 240,108 300,86 C360,64 420,52 480,30 L560,14" fill="none" stroke="#8F8FFC" stroke-width="3" stroke-linecap="round" stroke-dasharray="620" style="animation: drawLine 2.4s 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;"></path>
+            <g font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.35)">
+              <text x="4" y="176">Q1</text><text x="180" y="176">Q2</text><text x="360" y="176">Q3</text><text x="532" y="176">Q4</text>
+            </g>
+          </svg>
+        </div>
+        <div style="position: absolute; top: 218px; right: -8px; background: #1C1C2A; border: 1px solid rgba(143,143,252,0.35); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); animation: floaty2 6s 0.5s ease-in-out infinite;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.45);">ROAS</span>
+          <span style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 800; color: #ffffff;">6.4x</span>
+        </div>
+        <div style="position: absolute; bottom: 26px; left: 18px; background: #1C1C2A; border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); animation: floaty 8s 1.2s ease-in-out infinite;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.45);">CPA</span>
+          <span style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 800; color: #7CE0B8;">−34%</span>
+        </div>
+        <div style="position: absolute; bottom: 40px; right: 36px; background: #1C1C2A; border: 1px solid rgba(255,255,255,0.14); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; box-shadow: 0 16px 40px rgba(0,0,0,0.5); animation: floaty2 7s 2s ease-in-out infinite;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.45);">Organic Traffic</span>
+          <span style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 800; color: #8F8FFC;">+138%</span>
+        </div>
+      </div>
+    </div>
+    <!-- Client marquee, above the fold -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 26px 0; overflow: hidden;">
+      <div style="max-width: 1320px; margin: 0 auto 18px; padding: 0 32px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Trusted by startups and Fortune 500 brands</div>
+      <div style="display: flex; width: max-content; gap: 64px; animation: marquee 46s linear infinite; padding: 0 32px;">
+        <sc-for list="{{ marqueeClients }}" as="c" hint-placeholder-count="10">
+          <span style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.42); white-space: nowrap; letter-spacing: -0.01em;">{{ c }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <section data-screen-label="Proof" style="border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); background: #0D0D17;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 56px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 6px; border-left: 1px solid rgba(143,143,252,0.4); padding-left: 20px;">
+        <span style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">$160M+</span>
+        <span style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5;">in annual ad portfolios led by our senior team at Google</span>
+      </div>
+      <div class="rv" style="display: flex; flex-direction: column; gap: 6px; border-left: 1px solid rgba(143,143,252,0.4); padding-left: 20px;">
+        <span style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">300+</span>
+        <span style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5;">clients grown across search, e-commerce and lead generation</span>
+      </div>
+      <div class="rv" style="display: flex; flex-direction: column; gap: 6px; border-left: 1px solid rgba(143,143,252,0.4); padding-left: 20px;">
+        <span style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">20 yrs</span>
+        <span style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5;">combined insider experience at Google, working with global brands</span>
+      </div>
+      <div class="rv" style="display: flex; flex-direction: column; gap: 6px; border-left: 1px solid rgba(143,143,252,0.4); padding-left: 20px;">
+        <span style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">3</span>
+        <span style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5;">international awards for search and performance excellence</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SYSTEM -->
+  <section data-screen-label="Services" style="background: #0A0A12; padding: 140px 0 120px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+      <div class="rv" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-bottom: 64px;">
+        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 720px;">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Our Services</span>
+          <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(40px, 4.4vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;">Not four services.<br>One growth system.</h2>
+        </div>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 380px; text-wrap: pretty;">Paid media, organic growth, development and consulting work as one connected system - built to create demand, capture it, convert it and drive profitable growth.</p>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); cursor: pointer;" onClick="{{ s.toggle }}">
+            <div style="display: grid; grid-template-columns: 80px 1fr auto; align-items: center; gap: 24px; padding: 34px 8px;" style-hover="background: rgba(255,255,255,0.02);">
+              <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 700; color: {{ s.numColor }};">{{ s.num }}</span>
+              <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 700; letter-spacing: -0.02em; color: {{ s.titleColor }};">{{ s.name }}</h3>
+              <span style="width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #8F8FFC; transform: {{ s.chevron }}; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);">↓</span>
+            </div>
+            <div style="max-height: {{ s.panelMax }}; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1);">
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 40px; padding: 8px 8px 44px 104px;">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8F8FFC;">{{ s.sub1 }}</span>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.6);">{{ s.desc1 }}</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8F8FFC;">{{ s.sub2 }}</span>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.6);">{{ s.desc2 }}</p>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 32px;">
+                  <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,0.85);">{{ s.line }}</span>
+                  <a href="{{ s.href }}" style="font-size: 15px; font-weight: 600; color: #8F8FFC;" style-hover="color: #ffffff;">Explore {{ s.short }} →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+        <div style="border-top: 1px solid rgba(255,255,255,0.12);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section data-screen-label="Case study" style="background: linear-gradient(160deg, #1C1C4B 0%, #262664 55%, #1C1C2A 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 10%, rgba(143,143,252,0.18), transparent 60%);"></div>
+    <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 130px 32px;">
+      <div class="rv" style="display: flex; align-items: center; gap: 16px; margin-bottom: 40px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Case study</span>
+        <span style="height: 1px; flex: 1; background: rgba(255,255,255,0.15);"></span>
+        <span style="font-size: 13px; color: rgba(255,255,255,0.5);">Retail · MENA</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 72px; align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 36px;">
+          <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; text-wrap: balance;">The search program that won Carrefour MENA a MarCom Platinum.</h2>
+        </div>
+        <div class="rv" style="display: flex; flex-direction: column; gap: 0; background: rgba(10,10,18,0.35); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; backdrop-filter: blur(8px);">
+          <div style="padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8F8FFC;">Challenge</span>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.7);">Compete for high-intent retail searches across MENA against entrenched marketplaces.</p>
+          </div>
+          <div style="padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8F8FFC;">Strategy</span>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.7);">Unified paid and organic search: intent mapping, technical SEO and profit-led bidding on one measurement stack.</p>
+          </div>
+          <div style="padding: 24px 28px; display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8F8FFC;">Result</span>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.7);">Category-leading visibility - and a MarCom Platinum, selected from 6,500+ entries across 40+ countries.</p>
+          </div>
+          <a href="Blogs.dc.html" style="padding: 18px 28px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 15px; font-weight: 600; color: #8F8FFC; display: flex; justify-content: space-between;" style-hover="color: #ffffff;">Read the full story <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WAYVE -->
+  <section data-screen-label="Why Wayve" style="background: #FFFFFF; color: #050709; padding: 140px 0;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 88px; align-items: start;">
+      <div class="rv" style="position: sticky; top: 120px; display: flex; flex-direction: column; gap: 22px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #605FFC;">Our advantage</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(40px, 4.4vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;">Why Wayve</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #505152; max-width: 420px; text-wrap: pretty;">Performance marketing has become increasingly automated. Our advantage is knowing when to follow the platforms - and when to challenge them.</p>
+        <a href="About.dc.html" style="font-size: 16px; font-weight: 600; color: #605FFC; margin-top: 8px;" style-hover="color: #4C4CC9;">Meet the team →</a>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="4">
+          <div class="rv" style="border-top: 1px solid rgba(5,7,9,0.15); padding: 40px 0; display: grid; grid-template-columns: 72px 1fr; gap: 24px;">
+            <span style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 700; color: #605FFC;">{{ a.num }}</span>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.01em;">{{ a.title }}</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #505152; max-width: 560px; text-wrap: pretty;">{{ a.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <div style="border-top: 1px solid rgba(5,7,9,0.15);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section data-screen-label="Awards" style="background: #0A0A12; padding: 140px 0;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 72px; max-width: 760px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Our Awards</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(40px, 4.4vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;">Recognised for Performance. Awarded for Results.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div class="rv" style="border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: #0D0D17;">
+          <div style="background: #FFFFFF; padding: 36px; display: flex; justify-content: center;">
+            <img src="assets/award-marcom.png" alt="MarCom Awards 2025 Platinum Winner trophy" style="height: 260px; object-fit: contain;">
+          </div>
+          <div style="padding: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45);">Global Award</span>
+            <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 26px; font-weight: 700;">MarCom Award - Platinum Winner</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.6); text-wrap: pretty;">The MarCom Awards' highest distinction, selected from more than 6,500 entries across 40+ countries - for search engine marketing for Carrefour MENA.</p>
+            <a href="Blogs.dc.html" style="margin-top: auto; font-size: 15px; font-weight: 600; color: #8F8FFC;" style-hover="color: #ffffff;">View case study →</a>
+          </div>
+        </div>
+        <div class="rv" style="border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; background: #0D0D17;">
+          <div style="background: #000000; padding: 36px; display: flex; justify-content: center;">
+            <img src="assets/award-mena.png" alt="MENA Search Awards logo" style="height: 260px; object-fit: contain;">
+          </div>
+          <div style="padding: 32px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45);">International Awards</span>
+            <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 26px; font-weight: 700;">MENA Search Awards - 1st, Best Use of Search · 2nd, Best Start-Up Agency</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.6); text-wrap: pretty;">Recognised among the region's leading performance agencies for innovation and measurable search performance.</p>
+            <a href="Blogs.dc.html" style="margin-top: auto; font-size: 15px; font-weight: 600; color: #8F8FFC;" style-hover="color: #ffffff;">View case study →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section data-screen-label="Partners" style="background: #F2F2F2; color: #050709; padding: 130px 0;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: center;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 22px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #605FFC;">Our partners</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4vw, 58px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em;">Strategic partnerships. Better performance.</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #505152; max-width: 440px; text-wrap: pretty;">We work directly with the leading advertising and technology platforms - strategic insights, dedicated partner support, faster execution.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(5,7,9,0.12); border: 1px solid rgba(5,7,9,0.12); border-radius: 8px; overflow: hidden;">
+        <a href="https://www.google.com/partners" class="rv" style="background: #FFFFFF; padding: 30px 20px; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 700; font-size: 17px; color: #050709;" style-hover="background: #EFEFFE; color: #605FFC;">Google Partner</a>
+        <sc-for list="{{ partners }}" as="p" hint-placeholder-count="9">
+          <div class="rv" style="background: #FFFFFF; padding: 30px 20px; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 700; font-size: 17px; color: #050709;">{{ p }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section data-screen-label="CTA" style="background: radial-gradient(ellipse 80% 90% at 50% 120%, rgba(96,95,252,0.35), transparent 65%), #0A0A12; padding: 160px 0; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.4vw, 80px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance;">Let's build what comes next.</h2>
+      <p class="rv" style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 560px; text-wrap: pretty;">Bring us your ambition, your challenges and your commercial goals. Our senior team will define the right way forward.</p>
+      <div class="rv" style="display: flex; gap: 14px;">
+        <a href="Contact.dc.html" style="padding: 17px 32px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.4);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+        <a href="Services.dc.html" style="padding: 17px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff;" style-hover="border-color: rgba(255,255,255,0.6); color: #ffffff;">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const defs = [
+      { num: "01", name: "Performance Marketing", short: "paid media", href: "Performance-Marketing.dc.html",
+        sub1: "Paid Search", desc1: "Reach high-intent audiences through Google, OpenAI Ads and Microsoft Ads, continuously optimised to maximise profitable growth.",
+        sub2: "Paid Social", desc2: "Meta, TikTok, LinkedIn, Snapchat and Pinterest - creative, audience data and continuous optimisation, full-funnel.",
+        line: "Profit-first bidding built on our own calculation framework - not the platform's defaults." },
+      { num: "02", name: "Organic Growth", short: "organic", href: "Organic-Growth.dc.html",
+        sub1: "Search Engine Optimization", desc1: "Technical SEO, content and data-led search strategy that moves rankings, traffic and conversions.",
+        sub2: "Generative Engine Optimization", desc2: "Visibility inside ChatGPT, Gemini, Claude and Perplexity - where your next customers already search.",
+        line: "Long-term visibility across Google and AI-powered discovery - demand you don't pay for twice." },
+      { num: "03", name: "Development", short: "development", href: "Development.dc.html",
+        sub1: "Web Development", desc1: "Fast, conversion-focused websites and e-commerce - strong design, seamless UX, reliable technical performance.",
+        sub2: "App Development", desc2: "Scalable web and mobile applications built around your users, business model and long-term growth.",
+        line: "Every click we buy or earn lands on something engineered to convert." },
+      { num: "04", name: "Consulting", short: "consulting", href: "Consulting.dc.html",
+        sub1: "Digital Maturity", desc1: "Assess strategy, technology, measurement and processes - benchmark gaps and prioritise the biggest opportunities.",
+        sub2: "Business Consulting", desc2: "Complex challenges turned into clear, actionable strategies for performance and sustainable growth.",
+        line: "Strategy, technology and execution aligned with what the business actually needs to grow." }
+    ];
+    const services = defs.map((d, i) => {
+      const open = this.state.open === i;
+      return Object.assign({}, d, {
+        toggle: () => this.setState({ open: open ? -1 : i }),
+        panelMax: open ? "420px" : "0px",
+        chevron: open ? "rotate(180deg)" : "rotate(0deg)",
+        numColor: open ? "#8F8FFC" : "rgba(255,255,255,0.4)",
+        titleColor: open ? "#ffffff" : "rgba(255,255,255,0.82)"
+      });
+    });
+    const clients = ["Carrefour", "Majid Al Futtaim", "Bloomr", "Dashl", "Moe's Barbershop", "Jura Store", "Pier Yachts", "Party Social", "Vinci Hair Clinic", "White Clinic", "Wellkins", "XL Outdoor", "Särnmark", "Beslag Design", "Vindex", "Dubai Consultant"];
+    return {
+      services,
+      marqueeClients: clients.concat(clients),
+      partners: ["Meta", "TikTok", "Snap", "Microsoft Advertising", "Diginius", "Shopify", "Zapier", "Adjust", "Pinterest"],
+      advantages: [
+        { num: "01", title: "Insider platform expertise", desc: "Nearly 20 years combined at Google working with global brands - we can tell platform recommendations apart from what actually drives business growth." },
+        { num: "02", title: "Senior-only teams", desc: "Every account is led and executed by senior specialists with 10+ years in their field. No hand-offs to juniors, ever." },
+        { num: "03", title: "Profit-first performance model", desc: "We optimise for profit, not vanity metrics - using our own award-winning profit calculation framework instead of relying on ROAS alone." },
+        { num: "04", title: "Full-stack delivery", desc: "Paid media, SEO and development under one roof, so strategy, execution and technology work as one system." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

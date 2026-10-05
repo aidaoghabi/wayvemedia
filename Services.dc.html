@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-800.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    body { margin: 0; background: #0A0A12; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #8F8FFC; }
+    ::selection { background: #605FFC; color: #fff; }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+    .rv { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 5% entry 32%; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="font-family: Inter, sans-serif; background: #0A0A12; color: #ffffff; overflow-x: clip;">
+  <dc-import name="Nav" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="Services hero" style="background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(96,95,252,0.2), transparent 60%), #0A0A12; padding: 110px 0 90px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 28px;">
+      <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Services</span>
+      <h1 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(48px, 6vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; max-width: 1000px; text-wrap: balance;">Four disciplines, engineered as one growth system.</h1>
+      <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 620px; text-wrap: pretty;">A 360° growth model connecting media, organic, technology and strategy across every stage of the customer journey.</p>
+    </div>
+  </section>
+
+  <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+    <section data-screen-label="{{ p.name }}" style="background: {{ p.bg }}; color: {{ p.fg }}; border-top: 1px solid {{ p.border }}; padding: 120px 0;">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+        <div class="rv" style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: 22px; position: sticky; top: 120px;">
+            <span style="font-family: Sora, sans-serif; font-size: 14px; font-weight: 700; color: {{ p.accent }};">{{ p.num }}</span>
+            <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4.2vw, 60px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;">{{ p.name }}</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.65; color: {{ p.muted }}; max-width: 440px; text-wrap: pretty;">{{ p.sub }}</p>
+            <div style="display: flex; gap: 12px; margin-top: 10px;">
+              <a href="Contact.dc.html" style="padding: 14px 24px; background: #605FFC; border-radius: 6px; font-size: 15px; font-weight: 600; color: #ffffff;" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+              <a href="{{ p.href }}" style="padding: 14px 22px; border: 1px solid {{ p.btnBorder }}; border-radius: 6px; font-size: 15px; font-weight: 600;" style-hover="color: #8F8FFC;">Explore service →</a>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="border-top: 1px solid {{ p.border }}; padding: 36px 0; display: flex; flex-direction: column; gap: 10px;">
+              <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 24px; font-weight: 700;">{{ p.s1 }}</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.65; color: {{ p.muted }}; text-wrap: pretty;">{{ p.d1 }}</p>
+            </div>
+            <div style="border-top: 1px solid {{ p.border }}; padding: 36px 0; display: flex; flex-direction: column; gap: 10px;">
+              <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 24px; font-weight: 700;">{{ p.s2 }}</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.65; color: {{ p.muted }}; text-wrap: pretty;">{{ p.d2 }}</p>
+            </div>
+            <div style="border-top: 1px solid {{ p.border }};"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section data-screen-label="CTA" style="background: radial-gradient(ellipse 80% 90% at 50% 120%, rgba(96,95,252,0.35), transparent 65%), #0A0A12; border-top: 1px solid rgba(255,255,255,0.08); padding: 150px 0; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; color: #ffffff; text-wrap: balance;">Let's build what comes next.</h2>
+      <p class="rv" style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 560px;">Bring us your ambition, your challenges and your commercial goals. Our senior team will define the right way forward.</p>
+      <a href="Contact.dc.html" class="rv" style="padding: 17px 32px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.4);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const dark = { bg: "#0A0A12", fg: "#ffffff", muted: "rgba(255,255,255,0.6)", border: "rgba(255,255,255,0.12)", accent: "#8F8FFC", btnBorder: "rgba(255,255,255,0.25)" };
+    const light = { bg: "#FFFFFF", fg: "#050709", muted: "#505152", border: "rgba(5,7,9,0.15)", accent: "#605FFC", btnBorder: "rgba(5,7,9,0.25)" };
+    return { pillars: [
+      Object.assign({}, light, { num: "01", name: "Performance Marketing", href: "Performance-Marketing.dc.html",
+        sub: "Profitable customer acquisition through Paid Search and Paid Social, continuously optimised for measurable business outcomes.",
+        s1: "Paid Search", d1: "Reach high-intent audiences through Google and Microsoft Ads, continuously optimised to maximise profitable growth.",
+        s2: "Paid Social", d2: "Inspire, engage and convert audiences across Meta, TikTok, LinkedIn, Snapchat, Pinterest and other leading platforms." }),
+      Object.assign({}, dark, { num: "02", name: "Organic Growth", href: "Organic-Growth.dc.html",
+        sub: "Long-term visibility across traditional search engines and AI-powered discovery platforms - SEO and GEO as one strategy.",
+        s1: "Search Engine Optimization", d1: "Improve rankings, organic traffic and conversions through technical SEO, content optimisation and data-led search strategy.",
+        s2: "Generative Engine Optimization", d2: "Increase brand visibility across ChatGPT, Gemini, Claude, Perplexity and other AI-powered search and discovery platforms." }),
+      Object.assign({}, light, { num: "03", name: "Web & App Development", href: "Development.dc.html",
+        sub: "High-performing digital products designed to convert, scale and support long-term growth.",
+        s1: "Web Development", d1: "Fast, intuitive, conversion-focused websites combining strong design, seamless UX and reliable technical performance.",
+        s2: "App Development", d2: "Scalable mobile and web applications tailored to your users, business model and long-term growth objectives." }),
+      Object.assign({}, dark, { num: "04", name: "Business Consulting", href: "Consulting.dc.html",
+        sub: "Digital Maturity Assessment and Strategic Consulting - aligning strategy, technology and execution with your business goals.",
+        s1: "Digital Maturity Assessment", d1: "Evaluate your digital capabilities, processes, technology and measurement to identify gaps and prioritise growth opportunities.",
+        s2: "Strategic Consulting", d2: "Translate complex business challenges into clear, actionable strategies that improve performance and enable sustainable growth." })
+    ] };
+  }
+}
+</script>
+</body>
+</html>

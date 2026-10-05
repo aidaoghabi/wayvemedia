@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-800.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    body { margin: 0; background: #0A0A12; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #8F8FFC; }
+    ::selection { background: #605FFC; color: #fff; }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(143,143,252,0.5); } 50% { box-shadow: 0 0 0 12px rgba(143,143,252,0); } }
+    @keyframes dashMove { to { stroke-dashoffset: -24; } }
+    .rv { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 5% entry 32%; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="font-family: Inter, sans-serif; background: #0A0A12; color: #ffffff; overflow-x: clip;">
+  <dc-import name="Nav" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="About hero" style="background: radial-gradient(ellipse 80% 60% at 30% -20%, rgba(96,95,252,0.22), transparent 60%), #0A0A12; padding: 110px 0 100px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 28px;">
+      <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">About Wayve</span>
+      <h1 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(48px, 6vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; max-width: 1000px; text-wrap: balance;">Where performance meets precision.</h1>
+      <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 620px; text-wrap: pretty;">An international, award-winning performance marketing agency built around experience, commercial thinking and profitable growth.</p>
+    </div>
+    <div style="max-width: 1320px; margin: 64px auto 0; padding: 0 32px;">
+      <img src="assets/about-feature.png" alt="Wayve Media - analytics environment" style="width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); display: block;">
+    </div>
+  </section>
+
+  <section data-screen-label="Who we are" style="background: #FFFFFF; color: #050709; padding: 130px 0;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 22px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #605FFC;">Who we are</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4.2vw, 60px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;">Built for ambitious growth.</h2>
+      </div>
+      <div class="rv" style="display: flex; flex-direction: column; gap: 24px; font-size: 18px; line-height: 1.7; color: #505152;">
+        <p style="margin: 0; text-wrap: pretty;">Wayve works with ambitious companies - from fast-growing start-ups to global enterprises - to deliver measurable growth across paid media, organic search and digital strategy.</p>
+        <p style="margin: 0; text-wrap: pretty;">We combine data-led decision-making, precise execution and transparent collaboration to create tailored strategies that drive real leads, sales and long-term business impact.</p>
+        <div style="display: flex; gap: 14px; margin-top: 8px;">
+          <a href="Contact.dc.html" style="padding: 15px 26px; background: #605FFC; border-radius: 6px; font-size: 15px; font-weight: 600; color: #ffffff;" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+          <a href="Services.dc.html" style="padding: 15px 24px; border: 1px solid rgba(5,7,9,0.25); border-radius: 6px; font-size: 15px; font-weight: 600; color: #050709;" style-hover="color: #605FFC;">Explore services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Global presence" style="background: #0A0A12; padding: 130px 0; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 64px; max-width: 720px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Global presence</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4.2vw, 60px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;">Where Europe and the Middle East connect.</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.55); text-wrap: pretty;">Two international hubs connecting regional insight with global performance expertise.</p>
+      </div>
+      <div class="rv" style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; background: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.14) 1px, transparent 1.5px) 0 0 / 28px 28px, #0D0D17; padding: 72px 48px; overflow: hidden;">
+        <svg viewBox="0 0 1200 300" style="position: absolute; inset: 0; width: 100%; height: 100%;" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M280,190 C450,40 750,40 920,150" fill="none" stroke="rgba(143,143,252,0.6)" stroke-width="2" stroke-dasharray="4 8" stroke-linecap="round" style="animation: dashMove 1.4s linear infinite;"></path>
+        </svg>
+        <div style="position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+          <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px;">
+            <span style="width: 14px; height: 14px; border-radius: 50%; background: #8F8FFC; animation: pulseDot 2.4s ease-out infinite;"></span>
+            <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 28px; font-weight: 700;">Stockholm, Sweden</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.55);">European HQ - Nordic and European growth, engineering and strategy.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px; justify-self: end; text-align: right; align-items: flex-end; margin-top: 56px;">
+            <span style="width: 14px; height: 14px; border-radius: 50%; background: #8F8FFC; animation: pulseDot 2.4s 1.2s ease-out infinite;"></span>
+            <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 28px; font-weight: 700;">Dubai, United Arab Emirates</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.55);">MENA HQ - regional insight, retail and performance expertise across the Middle East.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Team" style="background: #0A0A12; padding: 40px 0 140px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+      <div class="rv" style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 64px; max-width: 760px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Team</span>
+        <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(38px, 4.2vw, 60px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;">The people behind Wayve.</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.55); text-wrap: pretty;">Senior industry leaders with deep global experience across advertising, growth, technology and commercial strategy.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;">
+        <sc-for list="{{ team }}" as="m" hint-placeholder-count="8">
+          <div class="rv" style="display: flex; flex-direction: column; gap: 16px;">
+            <sc-if value="{{ m.photo }}" hint-placeholder-val="{{ true }}">
+              <img src="{{ m.photo }}" alt="{{ m.name }}" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); filter: grayscale(0.4); display: block;">
+            </sc-if>
+            <sc-if value="{{ m.noPhoto }}" hint-placeholder-val="{{ false }}">
+              <div style="width: 100%; aspect-ratio: 1; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(150deg, #1C1C2A, #262664); display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-size: 44px; font-weight: 800; color: rgba(255,255,255,0.35);">{{ m.initials }}</div>
+            </sc-if>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 19px; font-weight: 700;">{{ m.name }}</h3>
+              <span style="font-size: 13px; font-weight: 600; color: #8F8FFC;">{{ m.role }}</span>
+              <p style="margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.55); text-wrap: pretty;">{{ m.bio }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div class="rv" style="margin-top: 72px; border: 1px solid rgba(143,143,252,0.35); border-radius: 10px; background: linear-gradient(140deg, rgba(96,95,252,0.14), rgba(96,95,252,0.03)); padding: 48px; display: flex; justify-content: space-between; align-items: center; gap: 40px;">
+        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px;">
+          <h3 style="margin: 0; font-family: Sora, sans-serif; font-size: 30px; font-weight: 700;">Join the Wayve</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.6); text-wrap: pretty;">We are always open to meeting exceptional talent across performance marketing, SEO, technology and strategy.</p>
+        </div>
+        <a href="Contact.dc.html" style="padding: 16px 28px; background: #605FFC; border-radius: 6px; font-size: 15px; font-weight: 600; color: #ffffff; white-space: nowrap;" style-hover="background: #4C4CC9; color: #ffffff;">Introduce yourself</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="background: radial-gradient(ellipse 80% 90% at 50% 120%, rgba(96,95,252,0.35), transparent 65%), #0A0A12; border-top: 1px solid rgba(255,255,255,0.08); padding: 150px 0; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance;">Let's build what comes next.</h2>
+      <p class="rv" style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 560px;">Bring us your ambition, your challenges and your commercial goals. Our senior team will define the right way forward.</p>
+      <div class="rv" style="display: flex; gap: 14px;">
+        <a href="Contact.dc.html" style="padding: 17px 32px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.4);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+        <a href="Services.dc.html" style="padding: 17px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff;" style-hover="border-color: rgba(255,255,255,0.6); color: #ffffff;">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const team = [
+      { name: "Aida Oghabi Roth", role: "CEO", photo: "assets/team-aida.png", bio: "17+ years of digital leadership at Google and WPP. Recognised as a Top 10 Talent in Retail & Marketing by Nova Nordics." },
+      { name: "Piet Roth", role: "Managing Partner", photo: "assets/team-piet.jpg", bio: "10+ years of senior experience at Google. Led portfolios exceeding $160M in annual revenue with sustained 40% YoY growth." },
+      { name: "Marcus Sahlstedt", role: "SEO Lead", photo: "assets/team-2.jpg", bio: "13+ years of SEO experience. Maximised organic traffic and conversions for over 300 clients across industries." },
+      { name: "Carl Adam Sebastian", role: "SEO Lead", photo: "assets/team-3.jpg", bio: "10+ years across technical optimisation, content strategy and organic growth - scalable search strategies for visibility and conversions." },
+      { name: "Christian Buchner", role: "Head of Development", photo: "", initials: "CB", bio: "10+ years in software, web and app development. Awarded by the Swiss Government for ventures in Digital Health and Finance." },
+      { name: "Charlotte", role: "Nordics Growth Lead", photo: "assets/team-4.jpg", bio: "Client strategy, commercial development and growth planning across Nordic markets - objectives turned into actionable strategy." },
+      { name: "Molly Helgesson", role: "Head of Brand Strategy", photo: "", initials: "MH", bio: "Built multiple consumer-facing businesses - entrepreneurial experience combined with brand strategy for distinctive, scalable brands." },
+      { name: "Jay Lefon", role: "Shopify & E-Commerce Lead", photo: "assets/team-5.png", bio: "Entrepreneur with hands-on e-commerce and Shopify experience - platform setup, automation, fulfilment and scalable operations." }
+    ];
+    return { team: team.map(m => Object.assign({ initials: "" }, m, { noPhoto: !m.photo })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-800.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    body { margin: 0; background: #0A0A12; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #8F8FFC; }
+    ::selection { background: #605FFC; color: #fff; }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes drawLine { from { stroke-dashoffset: 520; } to { stroke-dashoffset: 0; } }
+    @keyframes fadeArea { from { opacity: 0; } to { opacity: 1; } }
+    .rv { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 5% entry 32%; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="font-family: Inter, sans-serif; background: #0A0A12; color: #ffffff; overflow-x: clip;">
+  <dc-import name="Nav" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="OG hero" style="background: radial-gradient(ellipse 80% 60% at 70% -20%, rgba(96,95,252,0.22), transparent 60%), #0A0A12; padding: 110px 0 90px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 72px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 26px;">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Services · 02 - Organic Growth</span>
+        <h1 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.2vw, 76px); font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;">Visible on Google. Cited by AI.</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.62); max-width: 560px; text-wrap: pretty;">Discoverability across traditional search engines and AI-powered platforms - Search Engine Optimization and Generative Engine Optimization as one long-term visibility strategy.</p>
+        <div style="display: flex; gap: 14px;">
+          <a href="Contact.dc.html" style="padding: 15px 26px; background: #605FFC; border-radius: 6px; font-size: 15px; font-weight: 600; color: #ffffff;" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+          <a href="Services.dc.html" style="padding: 15px 22px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 15px; font-weight: 600; color: #ffffff;" style-hover="border-color: rgba(255,255,255,0.6); color: #ffffff;">All services</a>
+        </div>
+      </div>
+      <div aria-hidden="true" style="background: #12121B; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 26px; box-shadow: 0 24px 60px rgba(0,0,0,0.45); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45);">Search visibility</span>
+          <span style="font-family: Sora, sans-serif; font-size: 14px; font-weight: 700; color: #8F8FFC;">+240%</span>
+        </div>
+        <svg viewBox="0 0 460 150" style="width: 100%; height: auto; display: block;">
+          <defs><linearGradient id="og" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#605FFC" stop-opacity="0.35"></stop><stop offset="100%" stop-color="#605FFC" stop-opacity="0"></stop></linearGradient></defs>
+          <path d="M0,132 C50,130 90,122 140,108 C200,92 250,70 310,52 C370,34 420,24 460,12 L460,150 L0,150 Z" fill="url(#og)" style="animation: fadeArea 1.6s 0.8s ease both;"></path>
+          <path d="M0,132 C50,130 90,122 140,108 C200,92 250,70 310,52 C370,34 420,24 460,12" fill="none" stroke="#8F8FFC" stroke-width="3" stroke-linecap="round" stroke-dasharray="520" style="animation: drawLine 2.2s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;"></path>
+        </svg>
+        <div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+            <span style="color: rgba(255,255,255,0.7);">"best running shoes in Dubai"</span>
+            <span style="font-family: Sora, sans-serif; font-weight: 700; color: #7CE0B8;">#12 → #1</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+            <span style="color: rgba(255,255,255,0.7);">Cited by ChatGPT &amp; Perplexity</span>
+            <span style="font-family: Sora, sans-serif; font-weight: 700; color: #8F8FFC;">AI Visibility ↑</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+            <span style="color: rgba(255,255,255,0.7);">Core Web Vitals</span>
+            <span style="font-family: Sora, sans-serif; font-weight: 700; color: #7CE0B8;">Optimised ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Capabilities" style="background: #FFFFFF; color: #050709; padding: 130px 0;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px 80px;">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="4">
+          <div class="rv" style="border-top: 1px solid rgba(5,7,9,0.15); padding-top: 32px; display: flex; flex-direction: column; gap: 14px;">
+            <span style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 700; color: #605FFC;">{{ t.num }}</span>
+            <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em;">{{ t.title }}</h2>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #505152; text-wrap: pretty;">{{ t.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="background: radial-gradient(ellipse 80% 90% at 50% 120%, rgba(96,95,252,0.35), transparent 65%), #0A0A12; padding: 150px 0; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance;">Let's build what comes next.</h2>
+      <p class="rv" style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 560px;">Bring us your ambition, your challenges and your commercial goals. Our senior team will define the right way forward.</p>
+      <div class="rv" style="display: flex; gap: 14px;">
+        <a href="Contact.dc.html" style="padding: 17px 32px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.4);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+        <a href="Services.dc.html" style="padding: 17px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff;" style-hover="border-color: rgba(255,255,255,0.6); color: #ffffff;">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      topics: [
+        { num: "01", title: "Search visibility across Google and AI", desc: "From improving rankings in traditional search to visibility across AI-powered discovery - organic growth strategies built for long-term discoverability and demand." },
+        { num: "02", title: "Search Engine Optimization", desc: "Technical SEO, on-page optimisation, content strategy, keyword research, internal linking and authority building - for rankings, traffic and conversions." },
+        { num: "03", title: "Generative Engine Optimization", desc: "Content and entity optimisation for ChatGPT, Gemini, Claude, Perplexity and other AI platforms - strengthening brand visibility inside generated answers." },
+        { num: "04", title: "Content & search intelligence", desc: "Keyword research, intent analysis, content planning, competitive insights and ongoing measurement to capture new organic opportunities." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

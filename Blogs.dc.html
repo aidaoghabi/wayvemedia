@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-800.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+    @font-face { font-family: 'Sora'; src: url('assets/fonts/sora-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    body { margin: 0; background: #0A0A12; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #8F8FFC; }
+    ::selection { background: #605FFC; color: #fff; }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+    .rv { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-timeline: view(); animation-range: entry 5% entry 32%; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="font-family: Inter, sans-serif; background: #0A0A12; color: #ffffff; overflow-x: clip;">
+  <dc-import name="Nav" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="Insights hero" style="background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(96,95,252,0.2), transparent 60%), #0A0A12; padding: 110px 0 70px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 28px;">
+      <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #8F8FFC;">Insights</span>
+      <h1 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(48px, 6vw, 88px); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; max-width: 900px;">The Precision Playbook.</h1>
+      <p style="margin: 0; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 620px; text-wrap: pretty;">Latest news, practical insights, proven strategies and industry perspectives for smarter digital growth.</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+          <button onClick="{{ c.pick }}" style="padding: 9px 18px; border-radius: 4px; border: 1px solid {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">{{ c.name }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Articles" style="background: #FFFFFF; color: #050709; padding: 100px 0 130px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; gap: 0;">
+      <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+          <a href="Contact.dc.html" class="rv" style="display: grid; grid-template-columns: 380px 1fr auto; gap: 48px; align-items: center; border-top: 1px solid rgba(5,7,9,0.15); padding: 44px 0; color: #050709;" style-hover="color: #050709;">
+            <img src="{{ p.img }}" alt="{{ p.title }}" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; border: 1px solid rgba(5,7,9,0.1); display: block;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; gap: 14px; align-items: center; font-size: 13px;">
+                <span style="padding: 4px 10px; border-radius: 4px; background: #EFEFFE; color: #4C4CC9; font-weight: 600;">{{ p.cat }}</span>
+                <span style="color: #828384;">{{ p.date }}</span>
+              </div>
+              <h2 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(24px, 2.4vw, 34px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; text-wrap: balance;">{{ p.title }}</h2>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #505152; max-width: 620px; text-wrap: pretty;">{{ p.sub }}</p>
+            </div>
+            <span style="width: 52px; height: 52px; border: 1px solid rgba(5,7,9,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #605FFC;">→</span>
+          </a>
+        </sc-for>
+      </sc-if>
+      <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
+        <p style="margin: 0; padding: 60px 0; font-size: 16px; color: #828384; border-top: 1px solid rgba(5,7,9,0.15);">No articles in this category yet.</p>
+      </sc-if>
+      <div style="border-top: 1px solid rgba(5,7,9,0.15);"></div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="background: radial-gradient(ellipse 80% 90% at 50% 120%, rgba(96,95,252,0.35), transparent 65%), #0A0A12; padding: 150px 0; text-align: center;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5.4vw, 76px); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; text-wrap: balance;">Let's build what comes next.</h2>
+      <p class="rv" style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.6); max-width: 560px;">Bring us your ambition, your challenges and your commercial goals. Our senior team will define the right way forward.</p>
+      <div class="rv" style="display: flex; gap: 14px;">
+        <a href="Contact.dc.html" style="padding: 17px 32px; background: #605FFC; border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff; box-shadow: 0 12px 40px rgba(96,95,252,0.4);" style-hover="background: #4C4CC9; color: #ffffff;">Book Intro Call</a>
+        <a href="Services.dc.html" style="padding: 17px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 16px; font-weight: 600; color: #ffffff;" style-hover="border-color: rgba(255,255,255,0.6); color: #ffffff;">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cat: "All" };
+  renderVals() {
+    const all = [
+      { cat: "Paid Search", date: "2026", img: "assets/blog-0.jpg", title: "Wayve Media wins at the MENA Search Awards", sub: "Following a MarCom Platinum victory, Wayve continues to redefine performance marketing excellence in the MENA region." },
+      { cat: "SEO", date: "2026", img: "assets/blog-1.png", title: "Generative Engine Optimization: how brands get cited by AI", sub: "Search is no longer just ten blue links. How entity optimisation earns your brand a place inside AI-generated answers." },
+      { cat: "Performance", date: "2026", img: "assets/blog-2.png", title: "Why we optimise for profit, not ROAS", sub: "ROAS hides margin. Our profit calculation framework changes which campaigns deserve your budget - and which don't." }
+    ];
+    const names = ["All", "Paid Search", "Paid Social", "SEO", "Performance", "Development"];
+    const posts = this.state.cat === "All" ? all : all.filter(p => p.cat === this.state.cat);
+    return {
+      cats: names.map(n => {
+        const on = this.state.cat === n;
+        return { name: n, pick: () => this.setState({ cat: n }), bg: on ? "#605FFC" : "transparent", color: on ? "#ffffff" : "rgba(255,255,255,0.7)", border: on ? "#605FFC" : "rgba(255,255,255,0.25)" };
+      }),
+      posts, hasPosts: posts.length > 0, noPosts: posts.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>
