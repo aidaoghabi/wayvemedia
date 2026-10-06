@@ -1,0 +1,82 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "script.js"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--band",
+      "--brand",
+      "--brand-line",
+      "--brand-link",
+      "--brand-link-hover",
+      "--brand-soft",
+      "--faint",
+      "--ink",
+      "--max",
+      "--muted",
+      "--shadow-card",
+      "--shadow-soft",
+      "--surface"
+    ],
+    "tokenKinds": {
+      "--ink": "color",
+      "--muted": "color",
+      "--faint": "color",
+      "--brand": "color",
+      "--brand-link": "color",
+      "--brand-link-hover": "color",
+      "--brand-soft": "color",
+      "--brand-line": "color",
+      "--band": "color",
+      "--surface": "color",
+      "--max": "spacing",
+      "--shadow-card": "shadow",
+      "--shadow-soft": "shadow"
+    },
+    "fontFamilies": []
+  }
+}
