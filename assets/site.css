@@ -155,6 +155,11 @@ input::placeholder, textarea::placeholder { color: #B4B4B5; }
 .hv-row-dark:hover { background: rgba(var(--fg-rgb),0.02); }
 .hv-google:hover { background: #EFEFFE; color: #605FFC; }
 .hv-contact-cta:hover { background: rgba(96,95,252,0.2); color: var(--fg); }
+.book-chevron { transition: transform 0.2s ease; }
+.book-toggle[aria-expanded="true"] .book-chevron { transform: rotate(180deg); }
+.book-panel { overflow: hidden; }
+/* HubSpot keeps a ~4px inner margin around its card; widen and shift to crop it */
+.book-panel iframe { display: block; zoom: var(--hs-zoom, 1); width: calc(100% + 8px) !important; margin: 0 -4px; }
 .hv-send-btn:hover { background: #4C4CC9; }
 
 /* ---------------- Nav: hover-reveal mega menu (pure CSS) ---------------- */
