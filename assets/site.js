@@ -175,13 +175,14 @@
     bookToggle.addEventListener('click', function () {
       setBookOpen(bookPanel.hidden);
     });
-    // On this page the nav/footer "Book Intro Call" links open the calendar too
-    document.querySelectorAll('a[href*="booking-calendar/introduction-call"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        setBookOpen(true);
-        bookToggle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+    // "Book Intro Call" links (contact.html#book) open the calendar in place
+    // when already on this page. Delegated so the mobile header copy works too.
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest && e.target.closest('a[href$="contact.html#book"]');
+      if (!link) return;
+      e.preventDefault();
+      setBookOpen(true);
+      bookToggle.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     // contact.html#book opens the calendar straight away
     if (location.hash === '#book') setBookOpen(true);
