@@ -6,7 +6,7 @@
 <title>Contact - Wayve Media</title>
 <meta name="description" content="Tell us where you want to go. We'll show you how to get there.">
 <script>try{var t=localStorage.getItem("wm-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v=book4">
 </head>
 <body>
 <div style="font-family: Inter, sans-serif; background: var(--bg); color: var(--fg); overflow-x: clip;">
@@ -53,7 +53,7 @@
         <h1 style="margin: 0; font-family: Sora, sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;">Let's Talk About Growth.</h1>
         <p style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(var(--fg-rgb),0.6); max-width: 480px; text-wrap: pretty;">Tell us where you want to go. We'll show you how to get there.</p>
         <div style="display: flex; flex-direction: column; margin-top: 12px; border: 1px solid rgba(var(--fg-rgb),0.12); border-radius: 8px; overflow: hidden;">
-          <a href="https://www.wayvemedia.com/booking-calendar/introduction-call" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 16px; padding: 22px 24px; background: rgba(96,95,252,0.12); border-bottom: 1px solid rgba(var(--fg-rgb),0.1);" class="hv-contact-cta">
+          <button type="button" id="book" class="hv-contact-cta book-toggle" aria-expanded="false" aria-controls="book-panel" style="display: flex; align-items: center; gap: 16px; width: 100%; padding: 22px 24px; background: rgba(96,95,252,0.12); border: none; border-bottom: 1px solid rgba(var(--fg-rgb),0.1); font: inherit; color: inherit; text-align: left; cursor: pointer; scroll-margin-top: 96px;">
             <span style="width: 42px; height: 42px; border-radius: 6px; background: #605FFC; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
             </span>
@@ -61,8 +61,12 @@
               <span style="font-family: Sora, sans-serif; font-size: 16px; font-weight: 700;">Book Intro Call</span>
               <span style="font-size: 13px; color: rgba(var(--fg-rgb),0.55);">30 minutes with a senior leader - focused on your priorities.</span>
             </span>
-            <span style="margin-left: auto; color: var(--accent); font-size: 18px;">→</span>
-          </a>
+            <svg class="book-chevron" width="14" height="9" viewBox="0 0 10 6" fill="none" style="margin-left: auto; flex-shrink: 0; color: var(--accent);" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          </button>
+          <div id="book-panel" class="book-panel" hidden style="color-scheme: light; background: #FFFFFF; border-bottom: 1px solid rgba(var(--fg-rgb),0.1);">
+            <!-- HubSpot Meetings embed; the script is loaded by site.js when the panel first opens -->
+            <div class="meetings-iframe-container" data-src="https://meetings-eu1.hubspot.com/aida-oghabi-roth?embed=true"></div>
+          </div>
           <a href="tel:+971567162922" style="display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid rgba(var(--fg-rgb),0.1);" class="hv-row-white">
             <span style="width: 42px; height: 42px; border-radius: 6px; border: 1px solid rgba(var(--fg-rgb),0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8F8FFC" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"></path></svg>
@@ -154,6 +158,6 @@
     </div>
   </footer>
 </div>
-<script src="assets/site.js" defer></script>
+<script src="assets/site.js?v=book4" defer></script>
 </body>
 </html>

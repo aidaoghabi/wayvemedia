@@ -145,6 +145,47 @@
       if (sent) sent.style.display = '';
     });
   }
+
+  // ---------------- Contact: Book Intro Call calendar ----------------
+  // The "Book Intro Call" row expands to show the HubSpot Meetings embed.
+  // HubSpot's script is only loaded the first time the panel opens.
+  var bookToggle = document.querySelector('.book-toggle');
+  var bookPanel = document.getElementById('book-panel');
+  if (bookToggle && bookPanel) {
+    var meetingsLoaded = false;
+    // HubSpot centres a card of up to ~400px inside its iframe, leaving white
+    // bands on wider panels. Zooming the iframe makes that card fill the panel.
+    var fitMeetings = function () {
+      if (bookPanel.hidden) return;
+      var zoom = Math.max(1, bookPanel.clientWidth / 380);
+      bookPanel.style.setProperty('--hs-zoom', zoom.toFixed(3));
+    };
+    window.addEventListener('resize', fitMeetings);
+    var setBookOpen = function (open) {
+      bookPanel.hidden = !open;
+      bookToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      fitMeetings();
+      if (open && !meetingsLoaded) {
+        meetingsLoaded = true;
+        var hs = document.createElement('script');
+        hs.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+        document.body.appendChild(hs);
+      }
+    };
+    bookToggle.addEventListener('click', function () {
+      setBookOpen(bookPanel.hidden);
+    });
+    // On this page the nav/footer "Book Intro Call" links open the calendar too
+    document.querySelectorAll('a[href*="booking-calendar/introduction-call"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        setBookOpen(true);
+        bookToggle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    // contact.html#book opens the calendar straight away
+    if (location.hash === '#book') setBookOpen(true);
+  }
   // ---------------- Mobile menu ----------------
   // Built from the existing desktop nav so every page (including post/ with
   // its ../ paths) gets the same links without duplicating markup.
