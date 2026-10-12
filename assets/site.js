@@ -110,39 +110,79 @@
   }
 
   // ---------------- Contact: form submit ----------------
-  // Source: Contact.dc.html Component — state.sent. The original DSL's
-  // onClick="{{ send }}" only ever flips local state; it never posted to a
-  // real backend. Rather than invent one, this opens a pre-filled mailto:
-  // to info@wayvemedia.com (honest, no fake network success) and then shows
-  // the same "thank you" panel the design already included.
-  // NOTE for humans: wire this up to a real form-handling endpoint later.
+  // Posts the form to Web3Forms, which emails every submission (all fields)
+  // to info@wayvemedia.com. The access key lives in the form's hidden
+  // `access_key` input in contact.html; it is public by design.
+  // The "thank you" panel only shows once Web3Forms confirms delivery.
   var contactForm = document.querySelector('.contact-form');
   if (contactForm) {
+    var contactError = document.querySelector('.contact-error');
+    var sendBtn = contactForm.querySelector('button[type="submit"]');
+    var showContactError = function (msg) {
+      if (!contactError) return;
+      contactError.textContent = msg;
+      contactError.style.display = msg ? '' : 'none';
+    };
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = (contactForm.elements.name && contactForm.elements.name.value || '').trim();
-      var company = (contactForm.elements.company && contactForm.elements.company.value || '').trim();
-      var email = (contactForm.elements.email && contactForm.elements.email.value || '').trim();
-      var message = (contactForm.elements.message && contactForm.elements.message.value || '').trim();
+      var val = function (n) {
+        var el = contactForm.elements[n];
+        return (el && el.value || '').trim();
+      };
+      var name = val('name');
+      var company = val('company');
+      var email = val('email');
+      var message = val('message');
 
-      var subject = 'New enquiry from ' + (name || 'website visitor');
-      var bodyLines = [
-        'Name: ' + name,
-        'Company: ' + company,
-        'Email: ' + email,
-        '',
-        message
-      ];
-      var mailto = 'mailto:info@wayvemedia.com'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(bodyLines.join('\n'));
+      if (!name || !email || !message) {
+        showContactError('Please fill in your name, email and message.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showContactError('Please enter a valid email address.');
+        return;
+      }
+      showContactError('');
 
-      window.location.href = mailto;
+      var payload = {
+        access_key: val('access_key'),
+        subject: 'New website enquiry from ' + name + (company ? ' (' + company + ')' : ''),
+        from_name: 'Wayve Media Website',
+        replyto: email,
+        botcheck: contactForm.elements.botcheck ? contactForm.elements.botcheck.checked : false,
+        Name: name,
+        Company: company || '-',
+        Email: email,
+        Message: message,
+        Page: window.location.href
+      };
 
-      var fields = document.querySelector('.contact-form-fields');
-      var sent = document.querySelector('.contact-sent');
-      if (fields) fields.style.display = 'none';
-      if (sent) sent.style.display = '';
+      if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; }
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok || !data.success) throw new Error(data.message || 'Request failed');
+          });
+        })
+        .then(function () {
+          var fields = document.querySelector('.contact-form-fields');
+          var sent = document.querySelector('.contact-sent');
+          if (fields) fields.style.display = 'none';
+          if (sent) sent.style.display = 'block';
+          contactForm.reset();
+        })
+        .catch(function () {
+          showContactError('Sorry, your message could not be sent. Please try again or email us at info@wayvemedia.com.');
+        })
+        .then(function () {
+          if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Send'; }
+        });
     });
   }
 

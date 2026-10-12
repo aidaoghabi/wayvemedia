@@ -91,6 +91,9 @@
         <h2 style="margin: 0 0 4px; font-family: Sora, sans-serif; font-size: 24px; font-weight: 700;">Send Us a Message</h2>
         <div class="contact-sent" style="padding: 20px; background: #EFEFFE; border: 1px solid #8F8FFC; border-radius: 6px; font-size: 15px; color: #262664; line-height: 1.5;">Thank you - your message is on its way. A senior strategist will reply within one business day.</div>
         <form class="contact-form" novalidate>
+          <!-- Web3Forms: submissions are emailed to info@wayvemedia.com. The recipient address is set on this key's form in the web3forms.com dashboard -->
+          <input type="hidden" name="access_key" value="e0758b2f-8dc1-436a-be39-2156c17b4b3d">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none;">
           <div class="contact-form-fields" style="display: flex; flex-direction: column; gap: 20px;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
               <label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: #505152;">Name
@@ -106,6 +109,7 @@
             <label style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; color: #505152;">Message
               <textarea name="message" placeholder="Where do you want to grow?" rows="5" style="padding: 13px 14px; border: 1px solid #D9D9DA; border-radius: 6px; background: #FFFFFF; font-family: Inter, sans-serif; font-size: 15px; color: #050709; resize: vertical; outline-color: #605FFC;"></textarea>
             </label>
+            <div class="contact-error" role="alert" style="display: none; padding: 14px 16px; background: #FDEDED; border: 1px solid #F5A3A3; border-radius: 6px; font-size: 14px; color: #8A1C1C; line-height: 1.5;"></div>
             <button type="submit" style="padding: 15px; background: #605FFC; border: none; border-radius: 6px; font-family: Inter, sans-serif; font-size: 16px; font-weight: 600; color: #ffffff; cursor: pointer;" class="hv-send-btn">Send</button>
           </div>
         </form>
@@ -158,6 +162,6 @@
     </div>
   </footer>
 </div>
-<script src="assets/site.js?v=book5" defer></script>
+<script src="assets/site.js?v=form1" defer></script>
 </body>
 </html>
