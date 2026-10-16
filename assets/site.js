@@ -176,6 +176,9 @@
           if (fields) fields.style.display = 'none';
           if (sent) sent.style.display = 'block';
           contactForm.reset();
+          // GA4 conversion: fired only after Web3Forms confirms delivery
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'generate_lead', form_name: 'contact' });
         })
         .catch(function () {
           showContactError('Sorry, your message could not be sent. Please try again or email us at info@wayvemedia.com.');
@@ -226,6 +229,17 @@
     });
     // contact.html#book opens the calendar straight away
     if (location.hash === '#book') setBookOpen(true);
+
+    // GA4 conversion: the HubSpot iframe posts { meetingBookSucceeded: true }
+    // to this page once a meeting is confirmed.
+    window.addEventListener('message', function (e) {
+      var host = '';
+      try { host = new URL(e.origin).hostname; } catch (err) { return; }
+      if (!/(^|\.)hubspot\.com$/.test(host)) return;
+      if (!e.data || !e.data.meetingBookSucceeded) return;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'book_meeting' });
+    });
   }
   // ---------------- Mobile menu ----------------
   // Built from the existing desktop nav so every page (including post/ with
@@ -308,18 +322,16 @@
   document.body.appendChild(wa);
 
   // ---------------- Cookie consent (Google Consent Mode v2) ----------------
-  // Consent defaults are set to denied before any tag could load. When
-  // analytics or ads tags are added, they read these signals; the banner
-  // updates them and remembers the choice.
+  // The consent defaults (denied, or granted if previously accepted) are set
+  // by the inline script at the top of every page's <head>, before GTM loads.
+  // The banner here updates them and remembers the choice.
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
   var CONSENT_KEY = 'wm-consent';
   var denied = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' };
   var granted = { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' };
-  gtag('consent', 'default', Object.assign({ wait_for_update: 500 }, denied));
   var saved = null;
   try { saved = localStorage.getItem(CONSENT_KEY); } catch (e) { /* no storage: ask every visit */ }
-  if (saved === 'granted') gtag('consent', 'update', granted);
 
   var showBanner = function () {
     if (document.querySelector('.cookie-banner')) return;
